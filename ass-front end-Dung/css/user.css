@@ -1,0 +1,125 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
+}
+.heading img{
+    width: 100px;
+}
+.heading{
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 20px;
+    justify-content: space-between;
+}
+.head{
+    display: flex;
+    align-items: center;
+    margin-left: 150px;
+}
+.heading div{
+    font-size: 27px;
+    font-weight: bold;
+    margin-left: 20px;
+    color: #2980b9;
+}
+.heading a{
+    text-decoration: none;
+    color: #f53b57;
+    font-size: 18px;
+    margin-right: 50px;
+}
+main{
+    width: 100%;
+    height: 630px;
+    background-image: url(../images/background-dangnhap.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:center;
+    display: flex;
+    justify-content: space-between;
+}
+/* form article{
+    width: 500px;
+    height: 600px;
+} */
+form{
+    /* background-color: white; */
+    width: 406px;
+    border-radius: 5px;
+    height: 480px;
+    margin-right: 180px;
+    margin-top: 80px;
+}
+form div.head-form{
+    font-size: 23px;
+    padding: 30px;
+    padding-left: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+form div.head-form i{
+    font-size: 30px;
+    margin-right: 50px;
+    color: #f53b57;
+}
+form input{
+    width: 83%;
+    margin: 0 32px;
+    margin-bottom: 45px;
+    padding: 8px;
+    color: #002c7d;
+}
+#btn-submit{
+    border: none;
+    background: #ff5e57;
+    color: white;
+    width: 83%;
+    margin: auto 32px;
+    padding: 18px;
+    border-radius: 2px;
+}
+div.footer-form{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 4px 35px;
+    font-size: 13px;
+}
+article div i{
+    color: white;
+    font-size: 200px;
+    margin-left: 30px;
+    position: relative;
+    top: 11px;
+}
+article div{
+    margin-left: 345px;
+    margin-top: 50px;
+}
+article div div{
+    padding: 0;
+    margin: 0;
+    font-size: 18px;
+    width: 260px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+
+div.sigup{
+    font-size: 19px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding-left: 63px;
+    padding-top: 15px;
+}
+a{
+    color: #78a7ff;
+}
+.btnlogin{
+    color: #002c7d;
+}

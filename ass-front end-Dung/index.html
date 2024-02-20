@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+
+<body>
+  <header>
+    <p class="slogan-1 slogan">Vì tương lai phải nhai kiến thức</p>
+     <img class="banner" src="images/banner.jpg" alt="banner">
+    <p class="slogan-2 slogan">Phận làm trai gõ phím bình thiên hạ. <br> Thân anh hùng click chuột định giang sơn.</p>
+  </header> 
+
+  <nav class="navbar navbar-expand-sm bg-color navbar-dark" id="menu">
+    <div class="container-fluid">
+       <a class="navbar-brand" href="#"><img class="logo" src="images/logo.png" alt=""></a> 
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#section1"><i class="bi bi-list-task"></i>Trắc Nghiệm</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#section2"><i class="bi bi-list-task"></i>Giới thiệu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#section3"><i class="bi bi-telephone-fill"></i>Liện hệ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#section5"><i class="bi bi-question-circle"></i>Hỏi đáp</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav" id="login">
+          <li class="nav-item">
+            <a class="nav-link" href="dangnhap.html">Đăng nhập</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="dangki.html">Đăng kí</a>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <div id="section1" ng-app="myApp" ng-controller="Ctrl">
+      <div class="main-section1" id="main-section1">
+        <div class="select-majoy" id="select">
+           <img src="images/banner-trachnghiem.png" class="banner-tn" alt=""> 
+           <img src="images/btn-start.png" alt="" onclick="checkLogin()" class="btn-start"> 
+        </div>
+        <div class="select-sub" id="selectSub">
+          <div class="col-sm-3 sanpham" ng-click="play('ADAV')">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+              </div>
+              <div class="panel-body">
+                 <img src="images/ADAV.jpg"> 
+              </div>
+              <div class="panel-footer">
+                Lập trình Adroid nâng cao
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3 sanpham" ng-click="play('WEBU')">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+              </div>
+              <div class="panel-body">
+                 <img src="images/WEBU.jpg"> 
+              </div>
+              <div class="panel-footer">
+                Xây dựng trang web
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3 sanpham" ng-click="play('DBBS')">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+              </div>
+              <div class="panel-body">
+                <img src="images/DBBS.png"> 
+              </div>
+              <div class="panel-footer">
+                Cơ sở dữ liệu
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3 sanpham" ng-click="play('DBAV');loadQuestion()">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+              </div>
+              <div class="panel-body">
+                 <img src="images/DBAV.png"> 
+              </div>
+              <div class="panel-footer">
+                SQL sever
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3 sanpham" ng-click="play('PMAG')">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+              </div>
+              <div class="panel-body">
+                 <img src="images/PMAG.jpg"> 
+              </div>
+              <div class="panel-footer">
+                Quản lí dự án với Agile
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3 sanpham" ng-click="play('PHPP')">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+              </div>
+              <div class="panel-body">
+                 <img src="images/PHPP.png"> 
+              </div>
+              <div class="panel-footer">
+                Lập trình PHP
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="TracNghiem" id="tracNghiemCn1">
+          <div class="showQ" ng-repeat="q in question | limitTo : 1 : begin" ng-model="tt">
+            <h4>Câu hỏi <label>{{begin +1}}</label>:</h4>
+            <h4 class="cauhoi">{{q.Text }} </h4>
+            <div class="dapan" ng-repeat="a in q.Answers" ng-click="chonDapAn(a.Id, tt)">
+              <input type="checkbox" >. {{a.Text}}
+            </div>
+            <div class="dapan">B. </div>
+            <div class="dapan">C. </div>
+            <div class="dapan">D. </div> 
+          </div>
+
+        </div>
+        <button class="btn-default btn-tracnghiem" id="btn-chon" ng-click="chon()">Chọn</button>
+        <button class="btn-default btn-tracnghiem" id="btn-boqua" ng-click="boqua()">Bỏ qua</button>
+      </div>
+    </div>
+
+    <div id="section2">
+      <div class="title">
+        <h2>
+          <div>
+            <p class="chaomung">Chào mừng</p> Đến Với <label class="lb2">Quiz Time</label>
+          </div> Nền Tảng Thi Trắc Nghiệm Chuyên Ngành
+        </h2>
+        <p class="content-title">Nơi bạn có thể kiểm tra và cập nhật kiến thức của mình một cách thú vị và hiệu quả.
+          Được thiết kế đặc biệt cho các chuyên ngành khác nhau, giúp bạn nâng cao kỹ năng và hiểu
+          biết chuyên sâu.</p>
+        <button class="btn-title">Thông tin chúng tôi<i class="bi bi-arrow-right"></i></button>
+      </div>
+      <div class="content-ss2">
+        <img src="images/cntt.jpg" alt="" class="rounded-circle i1">
+        <img src="images/qtkd.jpeg" alt="" class="rounded-circle i2">
+        <img src="images/khachsan.png" alt="" class="rounded-circle i3">
+        <img src="images/dulich.jpg" alt="" class="rounded-circle i4">
+        <img src="images/cntt2.jpg" alt="" class="rounded-circle i5">
+        <img src="images/cntt3.jpg" alt="" class="rounded-circle i6"> 
+      </div>
+    </div>
+     end div.insta-ss2 
+
+
+    <div id="section3">
+      <div class="insta-ss3">
+        <div class="title-insta">
+          <label class="ig">INSTAGRAM</label>
+          <hr>
+        </div>
+        <div class="address-insta">
+          <i class="bi bi-instagram"></i>
+          <a href="https://www.com">website.text</a>
+        </div>
+        <div class="main-ss3">
+           <img src="images/ss3-1.jpg" alt="">
+          <img src="images/ss3-2.jpg" alt="">
+          <img src="images/ss3-3.jpg" alt="">
+          <img src="images/ss3-4.jpg" alt="">
+          <img src="images/ss3-5.jpg" alt="">
+          <img src="images/ss3-6.jpg" alt="">
+          <img src="images/ss3-7.jpg" alt="">
+          <img src="images/ss3-8.jpg" alt="">
+          <img src="images/ss3-9.jpg" alt="">
+          <img src="images/ss3-10.jpg" alt="">
+          <img src="images/ss3-11.jpg" alt="">
+          <img src="images/ss3-12.jpg" alt=""> 
+        </div>
+        <div class="infor-lienhe">
+          <p class="title">
+            Chúng tôi luôn sẵn lòng lắng nghe và hỗ trợ bạn. Hãy sử dụng các thông tin liên hệ dưới đây để kết nối với
+            chúng tôi:
+          </p>
+          <div class="main-lienhe">
+            <div class="form-1">
+              <div class="tt-lienhe">
+                <div class="tt-1">
+                  <h4>Email:</h4>
+                  <p>Email: <a href="gmail.com">dung@gmail.com</a></p>
+                </div>
+                <div class="tt-1">
+                  <h4>Trang xã hội:</h4>
+                  <p>Facebook: <a href="https://www.facebook.com/vcl.quan.aothatday">Van Dung</a></p>
+                  <p>Twitter: <a href="https://www.facebook.com/vcl.quan.aothatday">twitter.com/quiztime</a></p>
+                </div>
+                <div class="tt-1">
+                  <h4>Hotline:</h4>
+                  <p>Số điện thoại: <a href="gmail.com">05569524415</a></p>
+                </div>
+              </div>
+            </div>
+            <div class="form-2">
+              <img src="images/Backgronnd-lienhe.jpg" alt="">
+            </div>
+            <div class="form-3">
+              <div class="tt-lienhe">
+                <h4>Thông tin của bạn</h4>
+                <h6 class="name">Tên của bạn:</h6>
+                <div class="name-input">
+                  <div class="namex2">
+                    <p>Họ</p>
+                    <input type="text" required>
+                  </div>
+                  <div class="namex2">
+                    <p>Tên</p>
+                    <input type="text" required>
+                  </div>
+                </div>
+                <div class="email-input">
+                  <h6>Email</h6>
+                  <input type="text" required>
+                </div>
+                <button class="btn-lienhe">Hoàn thành</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+     end div.insta-ss3 
+
+
+
+     <div id="section4">
+      <h1>Góp ý</h1>
+      <p>Thư mục góp ý</p>
+    </div>
+    <div id="section5">
+      <h1>Hỏi đáp</h1>
+      <p>Thư mục hỏi đáp</p>
+    </div> 
+  </main>
+
+  <footer>
+    <div class="head-foot"></div>
+    <div class="card-group">
+      <div class="card">
+
+        <div class="card-body  card-1">
+          <h5 class="card-title">Thông Tin Liên Hệ</h5>
+          <div class="content"><i class="bi bi-facebook"></i> Van Dung</div>
+          <div class="content"><i class="bi bi-envelope"></i> quiztime.edu@gmail.com</div>
+          <div class="content"><i class="bi bi-twitter"></i> Quan Chu Ai</div>
+          <div class="content"><i class="bi bi-phone"></i> 0778542369</div>
+          <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+      <div class="card">
+
+        <div class="card-body">
+          <h5 class="card-title">Lời kết</h5>
+          <p class="card-text">Cảm ơn bạn đã tham gia Quiz Time - Nền tảng thi trắc nghiệm chuyên ngành của chúng tôi.
+            Chúng tôi hy vọng
+            rằng bạn đã có những trải nghiệm học tập thú vị và hữu ích.</p>
+          <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+      <div class="card">
+
+        <div class="card-body">
+          <h5 class="card-title">Thông Tin Liên Hệ</h5>
+          <div class="content"><i class="bi bi-facebook"></i> Van Dung</div>
+          <div class="content"><i class="bi bi-envelope"></i> quiztime.edu@gmail.com</div>
+          <div class="content"><i class="bi bi-twitter"></i> WWW.com</div>
+          <div class="content"><i class="bi bi-phone"></i> 0778542369</div>
+          <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <div class="ket" id="section5">
+    Cảm ơn bạn và hẹn gặp lại!
+  </div>
+  <script src="js/angular.js"></script>
+</body>
+<script src="js/index.js"></script>
+
+</html>
